@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.deklanowski.karaf</groupId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0-SNAPSHOT</version>
     <artifactId>sample</artifactId>
     <packaging>pom</packaging>
     <name>sample feature</name>

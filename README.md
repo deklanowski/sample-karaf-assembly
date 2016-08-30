@@ -56,6 +56,7 @@ you will get the following output when building the assembly:
 [ERROR]   mvn <goals> -rf :assembly
 ```
 
-Excluding the version number solves the issue. With a little debugging the issue lurks in
+Excluding the version number solves the issue. By the way this is not limited to -SNAPSHOT qualifiers, any '-<qualifier>' in the version number will provoke this issue. 
+Try changing the sample project to 1.0-RELEASE for example and you will get that same result. 
 
 

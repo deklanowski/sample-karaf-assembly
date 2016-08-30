@@ -13,7 +13,7 @@
 
     <properties>
         <karaf.version>4.0.6</karaf.version>
-        <sample.version>1.0.0-RELEASE</sample.version>
+        <sample.version>1.0-SNAPSHOT</sample.version>
     </properties>
 
 
