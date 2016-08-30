@@ -59,4 +59,4 @@ you will get the following output when building the assembly:
 Excluding the version number solves the issue. By the way this is not limited to -SNAPSHOT qualifiers, any '-<qualifier>' in the version number will provoke this issue. 
 Try changing the sample project to 1.0-RELEASE for example and you will get that same result. 
 
-
+Have a look at the [IntelliJ debug screenshot] (https://github.com/deklanowski/sample-karaf-assembly/blob/master/IntelliJ-Debug-Screenshot.pdf) to see what is going on in [Builder.java] (https://github.com/apache/karaf/blob/karaf-4.0.6/profile/src/main/java/org/apache/karaf/profile/assembly/Builder.java)
