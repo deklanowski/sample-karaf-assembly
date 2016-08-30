@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.deklanowski.karaf</groupId>
+    <version>1.0.0-RELEASE</version>
+    <artifactId>sample</artifactId>
+    <packaging>pom</packaging>
+    <name>sample feature</name>
+
+    <properties>
+        <!-- Default bundle metadata conventions: may be overidden for individual bundles if needed -->
+        <!-- see maven-bundle-plugin default configuration below -->
+        <bundle.name>${project.name}</bundle.name>
+        <bundle.symbolicName>${project.groupId}.${project.artifactId}</bundle.symbolicName>
+        <bundle.version>${project.version}</bundle.version>
+        <!-- bundle namespace is always defined in the bundle itself -->
+        <bundle.namespace/>
+    </properties>
+
+    <modules>
+        <module>api</module>
+        <module>impl</module>
+        <module>features</module>
+    </modules>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <!--
+                 | The following configuration is the default convention for IPM and related
+                 | projects and is a good convention in general.
+                -->
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.5.4</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions combine.self="override">
+                        <Bundle-Name>${bundle.name}</Bundle-Name>
+                        <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
+                        <!--
+                         | assume public classes are in the top package, and private classes are under ".internal"
+                        -->
+                        <Export-Package>
+                            !${bundle.namespace}.internal.*,${bundle.namespace}.*;version="${bundle.version}"
+                        </Export-Package>
+                        <Private-Package>${bundle.namespace}.internal.*</Private-Package>
+
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
