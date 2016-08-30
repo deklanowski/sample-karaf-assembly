@@ -11,7 +11,8 @@ a karaf feature descriptor file to be included in the assembly.
 
 # Issues
 In karaf 4.0.5 and 4.0.6 there is an issue with nested features which explicitly declare a version
-when that version is a development snapshot. 
+when that version has a qualifier e.g., such as development snapshot version like 1.0-SNAPSHOT or a release qualifier like for example 1.0.0-RELEASE.
+ 
 
 For example, take our features descriptor for the sample project:
 ```
@@ -56,7 +57,7 @@ you will get the following output when building the assembly:
 [ERROR]   mvn <goals> -rf :assembly
 ```
 
-Excluding the version number solves the issue. By the way this is not limited to -SNAPSHOT qualifiers, any '-<qualifier>' in the version number will provoke this issue. 
+Excluding the version number solves the issue. As stated this is not limited to -SNAPSHOT qualifiers, any '-<qualifier>' in the version number will provoke this issue. 
 Try changing the sample project to 1.0-RELEASE for example and you will get that same result. 
-
-Have a look at the [IntelliJ debug screenshot] (https://github.com/deklanowski/sample-karaf-assembly/blob/master/IntelliJ-Debug-Screenshot.pdf) to see what is going on in [Builder.java] (https://github.com/apache/karaf/blob/karaf-4.0.6/profile/src/main/java/org/apache/karaf/profile/assembly/Builder.java)
+The issue happens in the recursive addFeatures method in the karaf assembly building subsystem. Have a look at the [IntelliJ debug screenshot] (https://github.com/deklanowski/sample-karaf-assembly/blob/master/IntelliJ-Debug-Screenshot.pdf)
+to see what is going on in [Builder.java] (https://github.com/apache/karaf/blob/karaf-4.0.6/profile/src/main/java/org/apache/karaf/profile/assembly/Builder.java)
